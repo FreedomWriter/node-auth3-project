@@ -5,12 +5,16 @@ const morgan = require("morgan");
 
 const server = express();
 
-server.use(json());
+const userRouter = require("../users/user-routes");
+
+server.use(express.json());
 server.use(morgan("dev"));
 server.use(helmet());
 server.use(cors());
 
-server.use("/", (req, res) => {
+server.use("/api/users", userRouter);
+
+server.get("/", (req, res) => {
   res.send("<h5>Ready to serve</h5>");
 });
 

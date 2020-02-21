@@ -1,8 +1,7 @@
-const db =
-  require("../data/db.config") -
-  function find() {
-    return db("users").select();
-  };
+const db = require("../data/db-config");
+function find() {
+  return db("users").select();
+}
 
 function findById(id) {
   return db("users")
