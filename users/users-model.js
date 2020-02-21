@@ -1,11 +1,17 @@
 const db = require("../data/db-config");
 function find() {
-  return db("users").select();
+  return db("users").select("id", "username", "department");
 }
 
 function findById(id) {
   return db("users")
     .where({ id })
+    .first();
+}
+
+function findBy(filter) {
+  return db("users")
+    .where(filter)
     .first();
 }
 
@@ -35,5 +41,6 @@ module.exports = {
   findById,
   add,
   update,
-  remove
+  remove,
+  findBy
 };
